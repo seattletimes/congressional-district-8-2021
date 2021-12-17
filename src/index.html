@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <%= t.include("partials/_head.html", grunt.data.json) %>
+    <% if (!json.project.embedded) { %>
+      <%= t.include("partials/_dataLayer.html") %>
+      <script src="https://seattle-times.zeustechnology.com/main.js" async></script>
+      <script src="https://www.seattletimes.com/wp-content/plugins/st-advertising/dist/st-projects-bundle.js" async></script>
+    <% } %>
+    <% if (json.project.production && !json.project.embedded) { %>
+      <%= t.include("partials/_gtm.html") %>
+    <% } %>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <% if (json.project.production && !json.project.embedded) { %>
+      <%= t.include("partials/_gtmNoScript.html") %>
+    <% } %>
+    <responsive-child class="interactive" id="interactive">
+          <h3 class="graphic-hed">
+            New 8th Congressional District
+          </h3>
+
+          <h4 class="graphic-chatter">
+Washington's 8th Congressional District remains swing territory in the new maps drawn by the state's redistricting commission.
+The district got marginally less Democratic leaning, emboldening three Republican challengers to take on Rep. Kim Schrier, the Sammamish pediatrician who won the seat in 2018.
+          </h4>
+
+           <div class="graphic-chatter">
+             The district stayed largely intact, bridging the Cascade Mountains.
+             But it shed portions of Pierce County, including much of Auburn, while picking up much of Snohomish County along the U.S. Route 2 corridor.</div>
+
+           <div class="directions">CLICK THE BUTTONS BELOW TO SEE THE NEW AND OLD BOUNDARIES OF THE 8TH CONGRESSIONAL DISTRICT.</div>
+          <!-- content goes here -->
+          <div class="buttonCon">
+            <!-- <div id="cases" class="button">Total cases</div> -->
+            <div id="main" class="button active">Previous boundaries <span class="line"></span></div>
+            <!-- <div class="instruction">Proposed districts</div> -->
+            <div id="prop1" class="button">New boundaries <span class="new_line"></span></div>
+            <!-- <div id="prop1" class="button">April Sims (D)</div>
+            <div id="prop2" class="button">Brady Piñero Walkinshaw (D)</div>
+            <div id="prop3" class="button">Joe Fain (R)</div>
+            <div id="prop4" class="button">Paul Graves (R)</div> -->
+          </div>
+
+          <div id="map" class="aspect-ratio-outer">
+            <div class="aspect-ratio-inner">
+
+              <leaflet-map zoom=7>
+                <tile-layer layer="esriStreets"></tile-layer>
+              </leaflet-map>
+
+            </div>
+          </div>
+
+          <!-- <div id="map2" class="aspect-ratio-outer">
+            <div class="aspect-ratio-inner">
+
+              <leaflet-map zoom=7>
+                <tile-layer layer="esriStreets"></tile-layer>
+              </leaflet-map>
+
+            </div>
+          </div> -->
+
+          <!-- cartoPositron -->
+
+          <!-- <div id="legendCon">
+            <div class="key-title">Population variation from district's target size</div>
+            <div class="decrease">
+              <div class="legend">
+                <div class="color"></div>
+                <div class="number">
+                  <span class="his_vaxx">Less than -30,000</span>
+                </div>
+              </div>
+
+
+            <div class="legend">
+              <div class="color"></div>
+              <div class="number">
+                <span class="his_vaxx">-30,000 to -20,000</span>
+              </div>
+            </div>
+
+            <div class="legend">
+              <div class="color"></div>
+              <div class="number">
+                <span class="his_vaxx">-20,000 to -10,000</span>
+              </div>
+            </div>
+
+
+            <div class="legend">
+              <div class="color"></div>
+              <div class="number">
+                <span class="his_vaxx">-10,000 to 0</span>
+              </div>
+            </div>
+          </div>
+          <div class="increase">
+            <div class="legend">
+              <div class="color"></div>
+              <div class="number">
+                <span class="his_vaxx">0 to 10,000</span>
+              </div>
+            </div>
+
+
+            <div class="legend">
+              <div class="color"></div>
+              <div class="number">
+                <span class="his_vaxx">10,000 to 20,000</span>
+              </div>
+            </div>
+
+            <div class="legend">
+              <div class="color"></div>
+              <div class="number">
+                <span class="his_vaxx">20,000-plus</span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+
+
+          <!-- <p class="data-source">* Vaccination rate refers to those receiving at least one dose.</p> -->
+
+          <figcaption class="source-container">
+              <p class="data-source">Source:
+                <a href="https://www.redistricting.wa.gov/proposed-congressional-maps" target="_blank" rel="nofollow noreferrer noopener">Washington State Redistricting Commission</a>
+              </p>
+              <p class="art-credit">Lauren Flannery / The Seattle Times</p>
+            </figcaption>
+        </responsive-child>
+
+    <script src="app.js" async></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_analytics.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>

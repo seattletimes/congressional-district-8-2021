@@ -1,0 +1,278 @@
+@import "seattletimes";
+
+@aspect-ratio: 8/10;
+
+.desktop {
+  display: inline;
+  @media @mobile { display: none; }
+}
+.mobile {
+  display: none;
+  @media @mobile { display: inline; }
+}
+
+.directions {
+  color: @df-middle-gray;
+  text-transform: uppercase;
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  // letter-spacing: 1px;
+  margin: 1em auto;
+}
+
+
+// offset: [0, 0]
+
+.leaflet-pane.leaflet-tooltip-pane .leaflet-tooltip {
+  // box-shadow: none !important;
+  border: none !important;
+  background-color: rgba(255,255,255,0.5) !important;
+  padding: 0px 4px !important;
+  font-size: 15px;
+  font-weight: bold;
+
+  &.text-new-area {
+    background-color: rgba(255,255,255,0) !important;
+    box-shadow: none !important;
+    font-size: 17px;
+    letter-spacing: 1px;
+    text-decoration: underline;
+  }
+}
+
+.leaflet-tooltip-right:before {
+  border-right-color: transparent !important;
+}
+
+.leaflet-tooltip-left:before {
+  border-left-color: transparent !important;
+}
+
+.interactive {
+  max-width: 700px;
+  margin: auto;
+
+  .graphic-chatter {
+     text-align: left;
+  }
+
+  .data-source {
+    margin-bottom: 0px;
+  }
+  .art-credit {
+    margin-top: 0px;
+  }
+}
+
+.aspect-ratio-outer {
+  width: 100%;
+  position: relative;
+  .aspect-ratio-inner {
+    padding-bottom: percentage(@aspect-ratio);
+    position: relative;
+  }
+  leaflet-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    &:not([ready]) {
+      display: none;
+    }
+  }
+}
+
+.buttonCon {
+  margin: 1em auto;
+  font-size: 0px;
+
+  .instruction {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: @df-middle-gray;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+
+
+  .button {
+    width: ~"calc(50% - 7px)";
+    display: inline-block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: @df-light-gray;
+    margin: 2px 0px 10px 0px;
+    padding: 5px 10px;
+    cursor: pointer;
+    opacity: 0.8;
+
+    @media @mobile {
+      // width: ~"calc(50% - 3px)";
+      width: 100%;
+      font-size: 17px;
+      display: block;
+    }
+
+    &.active {
+      // background-color: #afafaf;
+      text-decoration: underline;
+      opacity: 1;
+      // -webkit-box-shadow:inset 0px 0px 0px 2px #000;
+      // -moz-box-shadow:inset 0px 0px 0px 2px #000;
+      // box-shadow:inset 0px 0px 0px 2px #000;
+    }
+  }
+
+  .button:nth-child(odd){
+    margin-right: 7px;
+    @media @mobile { margin-right: 3px; }
+  }
+  .button:nth-child(even){
+    margin-left: 7px;
+    @media @mobile { margin-left: 3px; }
+  }
+
+  .button#prop1 {
+    background-color: #699EBD;
+    -webkit-box-shadow:inset 0px 0px 0px 2px #325c74;
+    -moz-box-shadow:inset 0px 0px 0px 2px #325c74;
+    box-shadow:inset 0px 0px 0px 2px #325c74;
+
+    span {
+      display: inline-block;
+      width: 80px;
+      height: 4px;
+      border-bottom: 3px solid #3a6a86;
+      vertical-align: middle;
+      margin-left: 15px;
+      @media @mobile {margin-left: 5px;}
+    }
+
+
+  }
+
+  .button#main {
+    background-color: #bd934c;
+    // width: 100%;
+    // display: block;
+    // margin: 2px 0px 10px 0px;
+    -webkit-box-shadow:inset 0px 0px 0px 2px #000;
+    -moz-box-shadow:inset 0px 0px 0px 2px #000;
+    box-shadow:inset 0px 0px 0px 2px #000;
+
+
+    span {
+      display: inline-block;
+      width: 80px;
+      height: 4px;
+      border-bottom: 3px solid black;
+      vertical-align: middle;
+      margin-left: 15px;
+      @media @mobile {margin-left: 5px;}
+    }
+  }
+
+  .button:hover {
+    opacity: 1;
+  }
+}
+
+#legendCon {
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+  text-align: center;
+  font-size: 15px;
+
+  .key-title {
+    // font-size: 15px;
+    font-weight: bold;
+  }
+
+  .decrease, .increase {
+  display: inline-block;
+}
+.decrease {
+  margin-bottom: 5px;
+}
+
+.decrease::after {
+  content: "decrease";
+  border-top: 1px solid black;
+  display: block;
+  font-size: 0.9em;
+}
+.increase::after {
+  content: "increase";
+  border-top: 1px solid black;
+  display: block;
+  font-size: 0.9em;
+}
+
+
+  .legend {
+    display: inline-block;
+    vertical-align: top;
+    // margin-right: 10px;
+
+    .color {
+      min-width: 50px;
+      height: 15px;
+      opacity: 0.8;
+      // display: inline-block;
+    }
+
+    .number {
+      // display: inline-block;
+      padding: 0 7px;
+
+      span {
+
+        &.hide { display: none; }
+      }
+    }
+  }
+}
+.leaflet-popup-content-wrapper { max-width: 300px; }
+// .leaflet-popup-content { margin: 10px 15px; margin-top: 7px; }
+.popuptext {
+  .bigheader {
+    margin-top: 0px;
+    margin-bottom: 3px;
+    font-size: 16px;
+  }
+  .score {
+    span {
+      // display: block;
+      // max-width: 100px;
+    }
+    .bar {
+      // width: 50%;
+      height: 15px;
+      font-size: 11px;
+      font-weight: bold;
+      background-color: @df-light-gray;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0%, #fdce77));
+      background-image: linear-gradient(180deg, transparent 0%, #fdce77 0%);
+      background-size: 0% 100%;
+      transition: background-size 0.7s;
+      background-repeat: no-repeat;
+    -webkit-transition-delay: 0.25s;
+    transition-delay: 0.25s;
+
+    &.pop {
+      background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0%, @df-blue));
+      background-image: linear-gradient(180deg, transparent 0%, @df-blue 0%);
+    }
+
+      span {
+        display: block;
+        padding-left: 3px;
+      }
+    }
+  }
+}
